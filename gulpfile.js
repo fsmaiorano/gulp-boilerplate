@@ -91,6 +91,6 @@ gulp.task('watch', function () {
     gulp.watch(SASS_PATH, ['styles']);
 });
 
-gulp.task('default', function () {
+gulp.task('default', ['images', 'styles', 'scripts'], function () {
     console.log('---> [starting default task]');
 });
