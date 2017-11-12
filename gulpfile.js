@@ -7,6 +7,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
+var babel = require('gulp-babel');
 
 var DIST_PATH = 'public/dist';
 var SCRIPTS_PATH = 'public/scripts/**/*.js';
@@ -65,6 +66,9 @@ gulp.task('scripts', function (cb) {
             this.emit('end');
         }))
         .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['env']
+        }))
         .pipe(uglify())
         .pipe(concat('scripts.js'))
         .pipe(sourcemaps.write())
